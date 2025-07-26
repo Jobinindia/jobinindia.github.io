@@ -2,13 +2,33 @@
 <html>
 <head>
     <title>Redirecting...</title>
-    <meta http-equiv="refresh" content="1; URL='https://play.google.com/store/apps/details?id=com.thunkable.android.pccomputeramreli.PC_Job_Alert'" />
-    <link rel="canonical" href="https://play.google.com/store/apps/details?id=com.thunkable.android.pccomputeramreli.PC_Job_Alert" />
     <script type="text/javascript">
-        window.location.href = "https://play.google.com/store/apps/details?id=com.thunkable.android.pccomputeramreli.PC_Job_Alert";
+        window.onload = function() {
+            // Define the app's custom URL scheme (if you have one)
+            // For App Links, you can directly use the https:// link.
+            // However, a short timeout and fallback to Play Store is often
+            // used to ensure the app open attempt has a chance.
+            var appScheme = "pccomputeramreli://open"; // Example custom scheme, replace if your app has one
+            var appStoreLink = "https://play.google.com/store/apps/details?id=com.thunkable.android.pccomputeramreli.PC_Job_Alert";
+            var appLink = "https://jobinindia.github.io/pcjob"; // The App Link itself
+
+            // Try to open the app using the App Link directly
+            window.location.href = appLink;
+
+            // Set a timeout to redirect to the Play Store if the app doesn't open
+            // This timeout needs to be long enough for the OS to attempt to open the app,
+            // but not so long that the user waits unnecessarily. 500ms-1000ms is common.
+            setTimeout(function() {
+                // Check if the page is still focused. If the app opened, the page might lose focus.
+                // This is a common heuristic, but not foolproof.
+                if (!document.hidden) {
+                    window.location.href = appStoreLink;
+                }
+            }, 750); // 750 milliseconds
+        };
     </script>
 </head>
 <body>
-    <p>If you are not redirected automatically, follow this <a href="https://play.google.com/store/apps/details?id=com.thunkable.android.pccomputeramreli.PC_Job_Alert">link to the Play Store</a>.</p>
+    <p>If you are not redirected automatically, <a href="https://play.google.com/store/apps/details?id=com.thunkable.android.pccomputeramreli.PC_Job_Alert">click here to go to the Play Store</a>.</p>
 </body>
 </html>
